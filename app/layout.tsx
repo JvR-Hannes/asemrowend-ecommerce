@@ -141,7 +141,7 @@ export default async function RootLayout({
 
                   <Link
                     href="/admin/login"
-                    className="text-xs opacity-40 hover:opacity-100"
+                    className="text-xs opacity-1 hover:opacity-100"
                   >
                     Admin
                   </Link>
