@@ -1,0 +1,63 @@
+import { createProduct } from "@/app/actions/create-product";
+
+export default function NewProductPage() {
+  return (
+    <main className="p-8">
+      <h1 className="text-2xl font-bold">Create Product</h1>
+
+      <form action={createProduct} className="mt-6 space-y-4">
+        <input
+          name="name"
+          placeholder="Product name"
+          className="w-full rounded border p-2"
+          required
+        />
+
+        <input
+          name="slug"
+          placeholder="Slug (example: hoodie-black)"
+          className="w-full rounded border p-2"
+          required
+        />
+
+        <input
+          name="price"
+          type="number"
+          step="0.01"
+          placeholder="Price (ZAR)"
+          className="w-full rounded border p-2"
+          required
+        />
+
+        <textarea
+          name="description"
+          placeholder="Description"
+          className="w-full rounded border p-2"
+          required
+        />
+
+        <input
+          name="imageUrl"
+          placeholder="Image URL (example: /images/products/scrunchie.jpg)"
+          className="w-full rounded border p-2"
+        />
+
+        <input
+          name="stock"
+          type="number"
+          placeholder="Stock"
+          className="w-full rounded border p-2"
+        />
+
+        <label className="flex items-center rounded gap-2">
+          <input type="checkbox" name="active" defaultChecked />
+          Active
+        </label>
+
+        <button type="submit" className="rounded bg-black px-4 py-2 text-white">
+          Create Product
+        </button>
+      </form>
+    </main>
+  );
+}

@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  pending
+  paid
+  cancelled
+  failed
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  priceCents  Int
+  currency    String
+  description String
+  active      Boolean @default(true)
+
+  //NEW
+  imageUrl    String?
+
+  // NULL = unlimited stock
+  stock       Int?
+
+  featured    Boolean @default(false)
+
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id               String      @id @default(cuid())
+  totalCents       Int
+  status           OrderStatus @default(pending)
+  paymentReference String?
+  createdAt        DateTime    @default(now())
+  items            OrderItem[]
+}
+
+model OrderItem {
+  id        String @id @default(cuid())
+  orderId   String
+  productId String
+  name      String
+  unitPriceCents Int
+  quantity  Int
+  subtotalCents  Int
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+}
+
+model Promotion {
+  id        String   @id @default(cuid())
+  title     String
+  message   String
+  active    Boolean  @default(false)
+  startDate DateTime?
+  endDate   DateTime?
+  createdAt DateTime @default(now())
+}

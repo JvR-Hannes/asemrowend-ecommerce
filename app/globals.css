@@ -12,15 +12,35 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--brand-background);
+  color: var(--brand-text);
+  font-family: var(--font-geist-sans) Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --brand-primary: #1A6D82;      /* teal-blue main */
+  --brand-secondary: #0C4473;    /* darker secondary */
+  --brand-accent: #1C949D;       /* teal highlight */
+  --brand-background: #b9faf8;   /* softer blue background */
+  --brand-text: #031422;         /* dark text */
+  --brand-prices: #c6d6d4;       /* soft neutral */
+  --brand-anchor: #9BC53D;       /* muted lime-green */
+  --brand-button: #4CAF50;       /* complementary green button */
+  --brand-orange: #FF7B3C;       /* muted orange */
+  --brand-light-orange: #FFA25C; /* soft light orange */
+  --brand-purple: #5A2D82;       /* softened purple */
+  --brand-light-purple: #8B4ACF; /* lighter purple */
+  --brand-pink: #D33F84;         /* toned-down pink */
+  --brand-light-pink: #F25C91;   /* lighter pink accent */
+  --brand-light-blue: #07C8F9;   /* subtle highlight blue */
+  --brand-blue: #0D41E1;         /* deep blue accent */
+  --brand-electric: #03045E;     /* dark electric blue */
 }
