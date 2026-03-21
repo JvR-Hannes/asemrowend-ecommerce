@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { updateProduct } from "@/app/actions/update-product";
+import Link from "next/link";
 
 export default async function EditProductPage({
   params,
@@ -20,6 +21,12 @@ export default async function EditProductPage({
 
   return (
     <main className="max-w-xl p-8">
+      <Link
+        href="/admin/products"
+        className="text-sm text-blue-600 hover:underline"
+      >
+        ← Back to Products
+      </Link>
       <h1 className="text-2xl font-bold">Edit Product</h1>
 
       <form action={updateProductWithId} className="mt-6 space-y-4">

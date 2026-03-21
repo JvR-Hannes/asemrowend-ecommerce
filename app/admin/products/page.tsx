@@ -8,6 +8,9 @@ export default async function AdminProductsPage() {
 
   return (
     <main className="p-8">
+      <Link href="/admin" className="text-sm text-blue-600 hover:underline">
+        ← Back to Admin
+      </Link>
       <h1 className="text-2xl font-bold">Products</h1>
 
       <Link

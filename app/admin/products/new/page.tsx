@@ -1,8 +1,15 @@
 import { createProduct } from "@/app/actions/create-product";
+import Link from "next/link";
 
 export default function NewProductPage() {
   return (
     <main className="p-8">
+      <Link
+        href="/admin/products"
+        className="text-sm text-blue-600 hover:underline"
+      >
+        ← Back to Products
+      </Link>
       <h1 className="text-2xl font-bold">Create Product</h1>
 
       <form action={createProduct} className="mt-6 space-y-4">

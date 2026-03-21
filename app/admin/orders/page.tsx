@@ -1,12 +1,16 @@
 import { getOrders } from "@/lib/orders";
 import { formatZAR } from "@/lib/money";
 import { formatOrderNumber } from "@/lib/orderNumber";
+import Link from "next/link";
 
 export default async function AdminOrdersPage() {
   const orders = await getOrders();
 
   return (
     <main className="p-8">
+      <Link href="/admin" className="text-sm text-blue-600 hover:underline">
+        ← Back to Admin
+      </Link>
       <h1 className="text-2xl font-bold">Orders</h1>
 
       {orders.length === 0 && (
