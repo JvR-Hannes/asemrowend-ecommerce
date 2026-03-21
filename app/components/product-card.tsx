@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatZAR } from "@/lib/money";
+import Image from "next/image";
 
 type Product = {
   slug: string;
@@ -19,11 +20,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       className="flex h-full flex-col rounded-lg border-4 border-[#0C4473] bg-[#1f5a6c] p-4 transition hover:bg-[#2a6e78] hover:shadow-xl"
     >
       {product.imageUrl && (
-        <img
-          src={product.imageUrl}
-          alt={product.name}
-          className="mb-4 h-48 w-full rounded object-cover"
-        />
+        <div className="relative mb-4 h-48 w-full overflow-hidden rounded">
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
       )}
 
       <h2 className="text-lg font-semibold text-white sm:text-xl">
