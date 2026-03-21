@@ -1,12 +1,30 @@
-import { getProducts } from "@/lib/db-products";
+import { getAdminProducts } from "@/lib/db-products";
+import { Prisma } from "@prisma/client";
 import Link from "next/link";
 import Image from "next/image";
 import { formatZAR } from "@/lib/money";
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminProductsPage() {
-  const products = await getProducts();
+export default async function AdminProductsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ filter?: string }>;
+}) {
+  const params = await searchParams;
+  const filter = params?.filter;
+
+  let where: Prisma.ProductWhereInput = {};
+
+  if (filter === "active") {
+    where.active = true;
+  } else if (filter === "inactive") {
+    where.active = false;
+  } else if (filter === "featured") {
+    where.featured = true;
+  }
+
+  const products = await getAdminProducts(where);
 
   return (
     <main className="p-8">
@@ -22,6 +40,33 @@ export default async function AdminProductsPage() {
       >
         New product
       </Link>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Link href="/admin/products" className="rounded border px-3 py-1">
+          All
+        </Link>
+
+        <Link
+          href="/admin/products?filter=active"
+          className="rounded border px-3 py-1"
+        >
+          Active
+        </Link>
+
+        <Link
+          href="/admin/products?filter=inactive"
+          className="rounded border px-3 py-1"
+        >
+          Inactive
+        </Link>
+
+        <Link
+          href="/admin/products?filter=featured"
+          className="rounded border px-3 py-1"
+        >
+          Featured
+        </Link>
+      </div>
 
       <ul className="mt-6 space-y-4">
         {products.map((product) => (
