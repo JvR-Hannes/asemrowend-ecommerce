@@ -129,33 +129,11 @@ export default async function RootLayout({
                   >
                     Products
                   </Link>
-
-                  <Link
-                    href="/contact"
-                    className="text-base font-bold hover:underline sm:text-lg"
-                    style={{ color: "var(--brand-blue)" }}
-                  >
-                    Contact
-                  </Link>
-
-                  <Link
-                    href="/privacy"
-                    className="text-base font-bold hover:underline sm:text-lg"
-                    style={{ color: "var(--brand-blue)" }}
-                  >
-                    Privacy Policy
-                  </Link>
                 </div>
               </div>
 
               <div className="mt-6 text-center text-sm font-semibold sm:text-base text-[var(--brand-text)]">
                 © {new Date().getFullYear()} Asemrowend Pty Ltd
-                <Link
-                  href="/admin/login"
-                  className="text-[10px] opacity-10 hover:opacity-40"
-                >
-                  •
-                </Link>
               </div>
             </div>
           </footer>

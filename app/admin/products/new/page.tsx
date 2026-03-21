@@ -29,11 +29,22 @@ export default function NewProductPage() {
           required
         />
 
-        <input
-          name="imageUrl"
-          placeholder="Image URL (example: /images/products/scrunchie.jpg)"
-          className="w-full rounded border p-2"
-        />
+        <div className="space-y-1">
+          <label htmlFor="image" className="block font-medium">
+            Product Image
+          </label>
+          <input
+            id="image"
+            name="image"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            className="w-full rounded border p-2"
+            required
+          />
+          <p className="text-sm text-gray-600">
+            Upload a JPG, PNG, or WebP image.
+          </p>
+        </div>
 
         <input
           name="stock"

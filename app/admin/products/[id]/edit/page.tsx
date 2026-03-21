@@ -19,14 +19,14 @@ export default async function EditProductPage({
   const updateProductWithId = updateProduct.bind(null, id);
 
   return (
-    <main className="p-8 max-w-xl">
+    <main className="max-w-xl p-8">
       <h1 className="text-2xl font-bold">Edit Product</h1>
 
       <form action={updateProductWithId} className="mt-6 space-y-4">
         <input
           name="name"
           defaultValue={product.name}
-          className="w-full border p-2"
+          className="w-full rounded border p-2"
           required
         />
 
@@ -35,22 +35,49 @@ export default async function EditProductPage({
           type="number"
           step="0.01"
           defaultValue={product.priceCents / 100}
-          className="w-full border p-2"
+          className="w-full rounded border p-2"
           required
         />
 
         <textarea
           name="description"
           defaultValue={product.description}
-          className="w-full border p-2"
+          className="w-full rounded border p-2"
           required
         />
+
+        {product.imageUrl && (
+          <div className="space-y-2">
+            <p className="font-medium">Current Image</p>
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="h-40 w-full rounded border object-cover"
+            />
+          </div>
+        )}
+
+        <div className="space-y-1">
+          <label htmlFor="image" className="block font-medium">
+            Replace Image
+          </label>
+          <input
+            id="image"
+            name="image"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+            className="w-full rounded border p-2"
+          />
+          <p className="text-sm text-gray-600">
+            Leave blank to keep the current image.
+          </p>
+        </div>
 
         <input
           name="stock"
           type="number"
           defaultValue={product.stock ?? ""}
-          className="w-full border p-2"
+          className="w-full rounded border p-2"
         />
 
         <label className="flex items-center gap-2">
