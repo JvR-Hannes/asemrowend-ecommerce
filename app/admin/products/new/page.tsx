@@ -14,13 +14,6 @@ export default function NewProductPage() {
         />
 
         <input
-          name="slug"
-          placeholder="Slug (example: hoodie-black)"
-          className="w-full rounded border p-2"
-          required
-        />
-
-        <input
           name="price"
           type="number"
           step="0.01"
