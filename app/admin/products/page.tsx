@@ -1,6 +1,7 @@
 import { getProducts } from "@/lib/db-products";
 import Link from "next/link";
 import { formatZAR } from "@/lib/money";
+export const dynamic = "force-dynamic";
 
 export default async function AdminProductsPage() {
   const products = await getProducts();

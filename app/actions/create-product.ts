@@ -61,6 +61,7 @@ export async function createProduct(formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/products");
+  revalidatePath("/admin/products");
 
   redirect("/admin/products");
 }

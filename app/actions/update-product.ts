@@ -64,6 +64,8 @@ export async function updateProduct(id: string, formData: FormData) {
 
   revalidatePath("/");
   revalidatePath("/products");
+  revalidatePath("/admin/products");
+  revalidatePath(`/products/${existingProduct.slug}`);
 
   redirect("/admin/products");
 }
