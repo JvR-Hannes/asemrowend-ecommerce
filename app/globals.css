@@ -3,6 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --brand-primary: #1A6D82;
+  --brand-secondary: #0C4473;
+  --brand-accent: #1C949D;
+  --brand-background: #b9faf8;
+  --brand-text: #031422;
+  --brand-prices: #c6d6d4;
+  --brand-anchor: #9BC53D;
+  --brand-button: #4CAF50;
+  --brand-orange: #FF7B3C;
+  --brand-light-orange: #FFA25C;
+  --brand-purple: #5A2D82;
+  --brand-light-purple: #8B4ACF;
+  --brand-pink: #D33F84;
+  --brand-light-pink: #F25C91;
+  --brand-light-blue: #07C8F9;
+  --brand-blue: #0D41E1;
+  --brand-electric: #03045E;
 }
 
 @theme inline {
@@ -12,35 +30,43 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-body {
-  background: var(--brand-background);
-  color: var(--brand-text);
-  font-family: var(--font-geist-sans) Arial, Helvetica, sans-serif;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-:root {
-  --brand-primary: #1A6D82;      /* teal-blue main */
-  --brand-secondary: #0C4473;    /* darker secondary */
-  --brand-accent: #1C949D;       /* teal highlight */
-  --brand-background: #b9faf8;   /* softer blue background */
-  --brand-text: #031422;         /* dark text */
-  --brand-prices: #c6d6d4;       /* soft neutral */
-  --brand-anchor: #9BC53D;       /* muted lime-green */
-  --brand-button: #4CAF50;       /* complementary green button */
-  --brand-orange: #FF7B3C;       /* muted orange */
-  --brand-light-orange: #FFA25C; /* soft light orange */
-  --brand-purple: #5A2D82;       /* softened purple */
-  --brand-light-purple: #8B4ACF; /* lighter purple */
-  --brand-pink: #D33F84;         /* toned-down pink */
-  --brand-light-pink: #F25C91;   /* lighter pink accent */
-  --brand-light-blue: #07C8F9;   /* subtle highlight blue */
-  --brand-blue: #0D41E1;         /* deep blue accent */
-  --brand-electric: #03045E;     /* dark electric blue */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--brand-background);
+  color: var(--brand-text);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+* {
+  min-width: 0;
 }

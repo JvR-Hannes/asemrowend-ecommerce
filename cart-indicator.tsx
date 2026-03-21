@@ -9,7 +9,11 @@ export default function CartIndicator() {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <Link href="/cart" className="ml-4">
+    <Link
+      href="/cart"
+      className="font-bold hover:opacity-80"
+      style={{ color: "#088e9f" }}
+    >
       Cart ({totalItems})
     </Link>
   );

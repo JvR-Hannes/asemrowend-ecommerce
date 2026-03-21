@@ -13,8 +13,9 @@ export default function CartPage() {
   );
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+    <section className="mx-auto max-w-4xl px-4 py-8">
+      <h1 className="mb-6 text-2xl font-bold">Your Cart</h1>
+
       {items.length === 0 ? (
         <p className="text-gray-500">
           Your cart is empty.{" "}
@@ -27,35 +28,36 @@ export default function CartPage() {
           {items.map((item) => (
             <div
               key={item.product.slug}
-              className="flex justify-between items-center border rounded-lg p-4"
+              className="flex flex-col gap-2 rounded-lg border p-4 sm:flex-row sm:items-center sm:justify-between"
             >
-              <div>
+              <div className="min-w-0">
                 <h2 className="font-semibold">{item.product.name}</h2>
                 <p className="text-sm text-gray-600">
                   {formatZAR(item.product.priceCents)} x {item.quantity}
                 </p>
               </div>
 
-              <p className="font-semibold">
+              <p className="font-semibold sm:text-right">
                 {formatZAR(item.product.priceCents * item.quantity)}
               </p>
             </div>
           ))}
-          <div className="mt-8 flex justify-between items-center border-t pt-4">
+
+          <div className="mt-8 flex flex-col gap-2 border-t pt-4 sm:flex-row sm:items-center sm:justify-between">
             <span className="text-lg font-semibold">Total</span>
             <span className="text-lg font-bold">{formatZAR(total)}</span>
           </div>
 
-          <div className="mt-6 text-right">
+          <div className="mt-6">
             <Link
               href="/checkout"
-              className="inline-block rounded bg-black px-6 py-3 text-white hover:bg-gray-800"
+              className="inline-flex w-full items-center justify-center rounded bg-black px-6 py-3 text-white hover:bg-gray-800 sm:w-auto"
             >
               Proceed to Checkout
             </Link>
           </div>
         </div>
       )}
-    </main>
+    </section>
   );
 }

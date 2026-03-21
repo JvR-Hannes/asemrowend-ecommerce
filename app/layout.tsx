@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { CartProvider } from "@/context/cart-context";
 import { getActivePromotion } from "@/lib/promotions";
@@ -18,9 +18,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Asemrowend Pty Ltd | Pretoria Online Store ",
+  title: "Asemrowend Pty Ltd | Pretoria Online Store",
   description:
     "Asemrowend Pty Ltd is a Pretoria-based online store offering quality hair accessories with fast local delivery across South Africa.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default async function RootLayout({
@@ -38,29 +43,32 @@ export default async function RootLayout({
         <CartProvider>
           {activePromotion && (
             <div
-              className="text-center text-white py-2 text-sm font-semibold"
+              className="px-4 py-2 text-center text-sm font-semibold text-white"
               style={{ background: "var(--brand-accent)" }}
             >
-              🔥 {activePromotion.title} — {activePromotion.message}
-              <PromotionCountdown endDate={activePromotion.endDate} />
+              <span className="block sm:inline">
+                🔥 {activePromotion.title} — {activePromotion.message}
+              </span>
+              <span className="block sm:inline sm:ml-2">
+                <PromotionCountdown endDate={activePromotion.endDate} />
+              </span>
             </div>
           )}
-          {/* Header */}
+
           <header className="bg-white">
-            <div className="mx-auto flex max-w-6xl items-center justify-between p-4">
-              {/* Logo / Brand */}
+            <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
               <Link
                 href="/"
-                className="flex items-center gap-3 hover:opacity-90"
+                className="flex items-center justify-center gap-3 sm:justify-start hover:opacity-90"
               >
                 <img
                   src="/logo.jpg"
                   alt="Asemrowend Logo"
-                  className="h-12 w-12 object-contain"
+                  className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
                 />
 
                 <span
-                  className="text-xl font-bold"
+                  className="text-lg font-bold sm:text-xl"
                   style={{
                     backgroundImage:
                       "linear-gradient(to right, #1A6D82, #5EC5D1, #355d61, #1C949D, #111F2A)",
@@ -74,11 +82,10 @@ export default async function RootLayout({
                 </span>
               </Link>
 
-              {/* Navigation */}
-              <nav className="flex items-center gap-6">
+              <nav className="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6">
                 <Link
                   href="/"
-                  className="font-bold hover:opacity-80 text-lg"
+                  className="text-base font-bold hover:opacity-80 sm:text-lg"
                   style={{ color: "#088e9f" }}
                 >
                   Home
@@ -86,7 +93,7 @@ export default async function RootLayout({
 
                 <Link
                   href="/products"
-                  className="font-bold hover:opacity-80 text-lg"
+                  className="text-base font-bold hover:opacity-80 sm:text-lg"
                   style={{ color: "#088e9f" }}
                 >
                   Products
@@ -97,27 +104,27 @@ export default async function RootLayout({
             </div>
           </header>
 
-          {/* Page Content */}
-          <main className="mx-auto max-w-6xl">{children}</main>
-          {/* Footer */}
+          <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+            {children}
+          </main>
+
           <footer
             className="mt-20 border-t"
             style={{ background: "var(--brand-background)" }}
           >
-            <div className="mx-auto max-w-6xl px-6 py-10">
-              {/* Footer Top */}
+            <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
               <div className="flex flex-col items-center gap-4 text-center">
                 <h3
-                  className="text-2xl font-bold"
+                  className="text-xl font-bold sm:text-2xl"
                   style={{ color: "var(--brand-text)" }}
                 >
                   ASEMROWEND
                 </h3>
 
-                <div className="flex gap-6 text-sm">
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
                   <Link
                     href="/products"
-                    className="hover:underline text-lg font-bold"
+                    className="text-base font-bold hover:underline sm:text-lg"
                     style={{ color: "var(--brand-blue)" }}
                   >
                     Products
@@ -125,7 +132,7 @@ export default async function RootLayout({
 
                   <Link
                     href="/contact"
-                    className="hover:underline text-lg font-bold"
+                    className="text-base font-bold hover:underline sm:text-lg"
                     style={{ color: "var(--brand-blue)" }}
                   >
                     Contact
@@ -133,24 +140,22 @@ export default async function RootLayout({
 
                   <Link
                     href="/privacy"
-                    className="hover:underline text-lg font-bold"
+                    className="text-base font-bold hover:underline sm:text-lg"
                     style={{ color: "var(--brand-blue)" }}
                   >
                     Privacy Policy
                   </Link>
-
-                  <Link
-                    href="/admin/login"
-                    className="text-xs opacity-1 hover:opacity-100"
-                  >
-                    Admin
-                  </Link>
                 </div>
               </div>
 
-              {/* Footer Bottom */}
-              <div className="mt-6 text-center font-semibold text-md text-[var(--brand-text)]">
+              <div className="mt-6 text-center text-sm font-semibold sm:text-base text-[var(--brand-text)]">
                 © {new Date().getFullYear()} Asemrowend Pty Ltd
+                <Link
+                  href="/admin/login"
+                  className="text-[10px] opacity-10 hover:opacity-40"
+                >
+                  •
+                </Link>
               </div>
             </div>
           </footer>
