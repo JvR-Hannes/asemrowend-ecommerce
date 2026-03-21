@@ -2,13 +2,19 @@ import { prisma } from "./prisma";
 
 export async function getProducts() {
     return prisma.product.findMany({
+        where: {
+            active: true,
+        },
         orderBy: { name: "asc" },
     });
 }
 
 export async function getProductBySlug(slug: string) {
     return prisma.product.findUnique({
-        where: { slug },
+        where: {
+            slug,
+            active: true,
+        },
     });
 }
 
