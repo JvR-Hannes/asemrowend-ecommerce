@@ -1,6 +1,8 @@
 import { getProducts } from "@/lib/db-products";
 import Link from "next/link";
+import Image from "next/image";
 import { formatZAR } from "@/lib/money";
+
 export const dynamic = "force-dynamic";
 
 export default async function AdminProductsPage() {
@@ -11,6 +13,7 @@ export default async function AdminProductsPage() {
       <Link href="/admin" className="text-sm text-blue-600 hover:underline">
         ← Back to Admin
       </Link>
+
       <h1 className="text-2xl font-bold">Products</h1>
 
       <Link
@@ -26,9 +29,23 @@ export default async function AdminProductsPage() {
             key={product.id}
             className="flex items-center justify-between rounded border p-4"
           >
-            <div>
-              <h2 className="font-semibold">{product.name}</h2>
-              <p>{formatZAR(product.priceCents)}</p>
+            <div className="flex items-center gap-4">
+              {product.imageUrl && (
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded border">
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="64px"
+                  />
+                </div>
+              )}
+
+              <div>
+                <h2 className="font-semibold">{product.name}</h2>
+                <p>{formatZAR(product.priceCents)}</p>
+              </div>
             </div>
 
             <Link
