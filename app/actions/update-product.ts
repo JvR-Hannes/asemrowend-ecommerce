@@ -3,6 +3,7 @@
 import { put } from "@vercel/blob";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 function generateSlug(name: string) {
   return name
@@ -60,6 +61,9 @@ export async function updateProduct(id: string, formData: FormData) {
       featured,
     },
   });
+
+  revalidatePath("/");
+  revalidatePath("/products");
 
   redirect("/admin/products");
 }

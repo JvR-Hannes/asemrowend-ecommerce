@@ -1,5 +1,6 @@
 import { getProducts } from "@/lib/db-products";
 import ProductCard from "@/app/components/product-card";
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Products | Asemrowend Pty Ltd",

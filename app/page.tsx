@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getFeaturedProducts } from "@/lib/db-products";
 import ProductCard from "@/app/components/product-card";
 import { Product } from "@prisma/client";
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const featuredProducts = await getFeaturedProducts();

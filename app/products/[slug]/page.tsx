@@ -1,6 +1,7 @@
 import { getProductBySlug } from "@/lib/db-products";
 import AddToCartButton from "./add-to-cart-button";
 import { formatZAR } from "@/lib/money";
+export const dynamic = "force-dynamic";
 
 export default async function ProductPage({
   params,
