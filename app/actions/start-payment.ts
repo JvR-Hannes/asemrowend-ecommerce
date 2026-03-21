@@ -67,6 +67,7 @@ export async function startIkPayPayment(orderId: string) {
 
   if (!response.ok) {
     const errorText = await response.text();
+    console.error("IKHOKHA ERROR:", errorText);
     throw new Error(`iKhokha error: ${errorText}`);
   }
 
