@@ -3,9 +3,12 @@ import type { NextRequest } from "next/server";
 
 export function proxy(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/admin")) {
-    const auth = req.cookies.get("admin-auth");
+    const auth = req.cookies.get("admin-auth")?.value;
 
-    if (!auth && req.nextUrl.pathname !== "/admin/login") {
+    if (
+      auth !== process.env.ADMIN_SECRET &&
+      req.nextUrl.pathname !== "/admin/login"
+    ) {
       return NextResponse.redirect(new URL("/admin/login", req.url));
     }
   }
