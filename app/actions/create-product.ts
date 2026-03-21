@@ -19,6 +19,7 @@ export async function createProduct(formData: FormData) {
   const description = formData.get("description") as string;
   const stock = Number(formData.get("stock"));
   const active = formData.get("active") === "on";
+  const featured = formData.get("featured") === "on";
   const imageFile = formData.get("image") as File | null;
 
   if (!imageFile || imageFile.size === 0) {
@@ -56,6 +57,7 @@ export async function createProduct(formData: FormData) {
       imageUrl: blob.url,
       stock,
       active,
+      featured,
     },
   });
 

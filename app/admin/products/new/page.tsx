@@ -65,6 +65,11 @@ export default function NewProductPage() {
           Active
         </label>
 
+        <label className="flex items-center rounded gap-2">
+          <input type="checkbox" name="featured" />
+          Featured Product
+        </label>
+
         <button type="submit" className="rounded bg-black px-4 py-2 text-white">
           Create Product
         </button>
