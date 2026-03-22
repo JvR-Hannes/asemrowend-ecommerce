@@ -7,6 +7,7 @@ import CartIndicator from "@/cart-indicator";
 import PromotionCountdown from "@/app/components/promotion-countdown";
 import Script from "next/script";
 import Analytics from "@/app/components/analytics";
+import { Suspense } from "react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -139,7 +140,9 @@ export default async function RootLayout({
               </div>
             </div>
           </footer>
-          <Analytics />
+          <Suspense fallback={null}>
+            <Analytics />
+          </Suspense>
         </CartProvider>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
