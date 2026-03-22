@@ -6,6 +6,7 @@ import Link from "next/link";
 import CartIndicator from "@/cart-indicator";
 import PromotionCountdown from "@/app/components/promotion-countdown";
 import Script from "next/script";
+import Analytics from "@/app/components/analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -138,6 +139,7 @@ export default async function RootLayout({
               </div>
             </div>
           </footer>
+          <Analytics />
         </CartProvider>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
