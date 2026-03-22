@@ -24,12 +24,27 @@ export default function AddToCartButton({
 
   return (
     <button
-      onClick={() => addToCart(cartProduct)}
+      onClick={() => {
+        addToCart(cartProduct);
+
+        if (typeof window !== "undefined" && window.gtag) {
+          window.gtag("event", "add_to_cart", {
+            currency: "ZAR",
+            value: product.priceCents / 100,
+            items: [
+              {
+                item_id: product.id,
+                item_name: product.name,
+              },
+            ],
+          });
+        }
+      }}
       className="
         mt-6
         rounded
         px-4
-        py-2
+        py-2   
         bg-[var(--brand-accent)]
         text-white
         text-lg
