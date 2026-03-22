@@ -5,7 +5,7 @@ import Link from "next/link";
 import { formatZAR } from "@/lib/money";
 
 export default function CartPage() {
-  const { items } = useCart();
+  const { items, removeFromCart } = useCart();
 
   const total = items.reduce(
     (sum, item) => sum + item.product.priceCents * item.quantity,
@@ -35,6 +35,13 @@ export default function CartPage() {
                 <p className="text-sm text-gray-600">
                   {formatZAR(item.product.priceCents)} x {item.quantity}
                 </p>
+
+                <button
+                  onClick={() => removeFromCart(item.product.id)}
+                  className="mt-2 text-sm text-red-600 hover:underline"
+                >
+                  Remove
+                </button>
               </div>
 
               <p className="font-semibold sm:text-right">
