@@ -2,7 +2,7 @@
 
 import { useCart } from "@/context/cart-context";
 import type { Product as PrismaProduct } from "@prisma/client";
-import type { Product } from "@/lib/products"; // your domain type
+import type { Product } from "@/lib/products";
 
 export default function AddToCartButton({
   product,
@@ -40,19 +40,7 @@ export default function AddToCartButton({
           });
         }
       }}
-      className="
-        mt-6
-        rounded
-        px-4
-        py-2   
-        bg-[var(--brand-accent)]
-        text-white
-        text-lg
-        font-bold
-        cursor-pointer
-        hover:bg-[var(--brand-primary)]
-        transition
-      "
+      className="gradient-button mt-8 rounded-full px-6 py-3 text-base font-semibold text-white transition sm:text-lg"
     >
       Add to cart
     </button>

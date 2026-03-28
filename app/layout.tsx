@@ -41,16 +41,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} page-shell antialiased`}
       >
         <CartProvider>
           {activePromotion && (
-            <div
-              className="px-4 py-2 text-center text-sm font-semibold text-white"
-              style={{ background: "var(--brand-accent)" }}
-            >
+            <div className="bg-[linear-gradient(135deg,#7c3aed,#ec4899)] px-4 py-2 text-center text-sm font-semibold text-white shadow-lg">
               <span className="block sm:inline">
-                🔥 {activePromotion.title} — {activePromotion.message}
+                ✨ {activePromotion.title} — {activePromotion.message}
               </span>
               <span className="block sm:inline sm:ml-2">
                 <PromotionCountdown endDate={activePromotion.endDate} />
@@ -58,46 +55,41 @@ export default async function RootLayout({
             </div>
           )}
 
-          <header className="bg-white">
-            <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <header className="sticky top-0 z-40 border-b border-white/60 bg-white/72 backdrop-blur-xl">
+            <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
               <Link
                 href="/"
-                className="flex items-center justify-center gap-3 sm:justify-start hover:opacity-90"
+                className="group flex items-center justify-center gap-3 sm:justify-start"
               >
-                <img
-                  src="/logo.jpg"
-                  alt="Asemrowend Logo"
-                  className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
-                />
+                <div className="rounded-2xl bg-white p-2 shadow-md ring-1 ring-black/5 transition duration-200 group-hover:-translate-y-0.5">
+                  <img
+                    src="/logo.jpg"
+                    alt="Asemrowend Logo"
+                    className="h-10 w-10 shrink-0 rounded-xl object-contain sm:h-12 sm:w-12"
+                  />
+                </div>
 
-                <span
-                  className="text-lg font-bold sm:text-xl"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #1A6D82, #5EC5D1, #355d61, #1C949D, #111F2A)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    color: "transparent",
-                  }}
-                >
-                  ASEMROWEND
-                </span>
+                <div>
+                  <span className="gradient-text text-lg font-black tracking-[0.2em] sm:text-xl">
+                    ASEMROWEND
+                  </span>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-[var(--brand-muted)] sm:text-[0.78rem]">
+                    Playful luxury essentials
+                  </p>
+                </div>
               </Link>
 
-              <nav className="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6">
+              <nav className="flex flex-wrap items-center justify-center gap-2 sm:justify-end sm:gap-3">
                 <Link
                   href="/"
-                  className="text-base font-bold hover:opacity-80 sm:text-lg"
-                  style={{ color: "#088e9f" }}
+                  className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--brand-text)] transition hover:bg-white hover:shadow sm:text-base"
                 >
                   Home
                 </Link>
 
                 <Link
                   href="/products"
-                  className="text-base font-bold hover:opacity-80 sm:text-lg"
-                  style={{ color: "#088e9f" }}
+                  className="rounded-full px-4 py-2 text-sm font-semibold text-[var(--brand-text)] transition hover:bg-white hover:shadow sm:text-base"
                 >
                   Products
                 </Link>
@@ -111,39 +103,39 @@ export default async function RootLayout({
             {children}
           </main>
 
-          <footer
-            className="mt-20 border-t"
-            style={{ background: "var(--brand-background)" }}
-          >
+          <footer className="mt-20 border-t border-white/60 bg-white/60 backdrop-blur-md">
             <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-              <div className="flex flex-col items-center gap-4 text-center">
-                <h3
-                  className="text-xl font-bold sm:text-2xl"
-                  style={{ color: "var(--brand-text)" }}
-                >
+              <div className="soft-card flex flex-col items-center gap-4 rounded-[2rem] px-6 py-8 text-center">
+                <h3 className="gradient-text text-2xl font-black tracking-[0.18em] sm:text-3xl">
                   ASEMROWEND
                 </h3>
 
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-6">
+                <p className="max-w-xl text-sm leading-6 text-[var(--brand-muted)] sm:text-base">
+                  Feminine accessories, polished presentation, and a storefront
+                  that feels more premium from the first glance.
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                   <Link
                     href="/products"
-                    className="text-base font-bold hover:underline sm:text-lg"
-                    style={{ color: "var(--brand-blue)" }}
+                    className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-[var(--brand-blue)] shadow-sm transition hover:-translate-y-0.5 hover:shadow md:text-base"
                   >
-                    Products
+                    Shop Products
                   </Link>
                 </div>
               </div>
 
-              <div className="mt-6 text-center text-sm font-semibold sm:text-base text-[var(--brand-text)]">
+              <div className="mt-6 text-center text-sm font-medium text-[var(--brand-muted)] sm:text-base">
                 © {new Date().getFullYear()} Asemrowend Pty Ltd
               </div>
             </div>
           </footer>
+
           <Suspense fallback={null}>
             <Analytics />
           </Suspense>
         </CartProvider>
+
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"

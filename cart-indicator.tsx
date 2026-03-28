@@ -11,10 +11,9 @@ export default function CartIndicator() {
   return (
     <Link
       href="/cart"
-      className="font-bold hover:opacity-80"
-      style={{ color: "#088e9f" }}
+      className="rounded-full bg-[linear-gradient(135deg,rgba(124,58,237,0.12),rgba(236,72,153,0.14))] px-4 py-2 text-sm font-semibold text-[var(--brand-purple)] shadow-sm transition hover:-translate-y-0.5 hover:shadow sm:text-base"
     >
-      Cart ({totalItems})
+      Cart <span className="ml-1">({totalItems})</span>
     </Link>
   );
 }
